@@ -32,6 +32,7 @@ class NewUserInvitationEmail:
             'recipient_email': recipient_email,
             'temp_password': temp_password,
             'login_url': login_url,
+            'service': config.service_name
         }
 
         subject = self.subject.format(sender=sender_email)
