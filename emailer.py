@@ -22,7 +22,7 @@ def main():
 
     try:
         while not interrupted:
-            logging.info("checking email queue")
+            logging.debug("checking email queue")
             processor.process()
             time.sleep(config.queue.getfloat('sleep_seconds', 10))
     except Exception as e:
