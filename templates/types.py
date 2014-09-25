@@ -6,7 +6,7 @@ from templates import Message
 
 
 class NewUserInvitationEmail:
-    subject = '%(sender) has shared an account with you'
+    subject = '{sender} has shared an account with you'
     type = 'new_user_invitation'
     template = 'new-user-invitation'
 
@@ -14,33 +14,32 @@ class NewUserInvitationEmail:
         return
 
     def get_message(self, item):
-        return None
-        # args = item.get_arguments()
-        #
-        # sender_email = args[0]
-        # recipient_email = args[1]
-        # temp_password = args[2]
-        #
-        # url_args = {
-        # 'u': recipient_email,
-        #     'p': temp_password,
-        # }
-        #
-        # login_url = urllib.basejoin(config.service_url, 'install.html' + '#' + urllib.urlencode(url_args))
-        #
-        # variables = {
-        #     'sender_email': sender_email,
-        #     'recipient_email': recipient_email,
-        #     'temp_password': temp_password,
-        #     'login_url': login_url,
-        # }
-        #
-        # subject = self.subject % {'sender': sender_email}
-        #
-        # html = templates.get_html_content(self.template, variables)
-        # text = templates.get_text_content(self.template, variables)
-        #
-        # return Message(subject, recipient_email, None, text, html)
+        args = item.get_arguments()
+
+        sender_email = args[0]
+        recipient_email = args[1]
+        temp_password = args[2]
+
+        url_args = {
+            'u': recipient_email,
+            'p': temp_password,
+        }
+
+        login_url = urllib.basejoin(config.service_url, 'install.html' + '#' + urllib.urlencode(url_args))
+
+        variables = {
+            'sender_email': sender_email,
+            'recipient_email': recipient_email,
+            'temp_password': temp_password,
+            'login_url': login_url,
+        }
+
+        subject = self.subject.format(sender=sender_email)
+
+        html = templates.get_html_content(self.template, variables)
+        text = templates.get_text_content(self.template, variables)
+
+        return Message(subject, recipient_email, None, text, html)
 
 
 class AddressVerificationEmail:
