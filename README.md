@@ -18,8 +18,8 @@ What's Missing
 
 Requirements
 ------------
-Python 2.7 (not tested on 3+)
-Postgres with the development libraries
+* Python 2.7 (not tested on 3+)
+* Postgres with development libraries
 
 Install
 -------
@@ -35,7 +35,9 @@ Setup virtualenv and dependencies
 
 Configure
 ---------
-Simply edit config.ini
+
+1. Copy `config.ini.example` to `config.ini`
+2. Edit `config.ini`
 
 Run
 ---
