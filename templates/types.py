@@ -75,14 +75,37 @@ class AddressVerificationEmail:
 
 
 class NewDeviceLoginEmail:
-    type = 'new-device-login'
+    subject = '%(service): Verify your account for a new device'
+    type = 'new_device_login'
     template = 'new-device-login'
 
     def __init__(self):
         return
 
     def get_message(self, item):
-        return None
+        subject = self.subject.format(service=config.service_name)
+
+        args = item.get_arguments()
+        recipient_email = args[0]
+        token = args[1]
+        token_signature = args[2]
+
+        url_args = {
+            'user': recipient_email,
+            'token': token,
+            'token_signature': token_signature
+        }
+
+        variables = {
+            'verification_link': urllib.basejoin(config.service_url,
+                                                 'mitro-core/user/VerifyDevice' + '?' + urllib.urlencode(url_args)),
+            'service': config.service_name
+        }
+
+        html = templates.get_html_content(self.template, variables)
+        text = templates.get_text_content(self.template, variables)
+
+        return Message(subject, recipient_email, None, text, html)
 
 
 class IssueReportedEmail:

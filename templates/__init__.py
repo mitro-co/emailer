@@ -1,11 +1,13 @@
+from tornado import template
+
 from .message import Message
 from templates.types import *
-from tornado import template
+
 
 types = {
     'new_user_invitation': NewUserInvitationEmail(),
     'address_verification': AddressVerificationEmail(),
-    'new-device-login': NewDeviceLoginEmail(),
+    'new_device_login': NewDeviceLoginEmail(),
     'issue_reported': IssueReportedEmail(),
     'product-verify': ProductVerifyEmail(),
     'onboard-verify': OnboardVerifyEmail(),
