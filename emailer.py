@@ -26,7 +26,6 @@ def main():
             processor.process()
             time.sleep(config.queue.getfloat('sleep_seconds', 10))
     except Exception as e:
-        raise e
         logging.critical(e.message)
     finally:
         database.close_connection()
