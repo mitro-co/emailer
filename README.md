@@ -23,12 +23,14 @@ Postgres with the development libraries
 
 Install
 -------
+Install virtualenv
 ```
 pip install virtualenv
 ```
 
+Setup virtualenv and dependencies
 ```
-./build.sh to set up Python virtualenv with dependencies. You may need run
+./build.sh
 ```
 
 Configure
