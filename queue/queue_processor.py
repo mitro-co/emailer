@@ -34,6 +34,7 @@ class QueueProcessor:
             result = self.provider.send(message)
             logging.info('sent ' + item.type_string + ' to ' + json.dumps(message.to))
         except Exception as e:
+            raise e
             logging.critical(e.message)
             result = False
 

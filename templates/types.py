@@ -75,7 +75,7 @@ class AddressVerificationEmail:
 
 
 class NewDeviceLoginEmail:
-    subject = '%(service): Verify your account for a new device'
+    subject = '{service}: Verify your account for a new device'
     type = 'new_device_login'
     template = 'new-device-login'
 
@@ -117,27 +117,28 @@ class IssueReportedEmail:
         return
 
     def get_message(self, item):
-        args = item.get_arguments()
-        user_email_address = args[0]
-        url = args[1]
-        issue_type = args[2]
-        description = args[3]
-        issue_id = args[4]
-
-        subject = self.subject % {'service': config.service_name, 'id': issue_id, 'url': url}
-
-        variables = {
-            'issue_id': issue_id,
-            'user_email': user_email_address,
-            'url': url,
-            'issue_type': issue_type,
-            'description': description
-        }
-
-        html = templates.get_html_content(self.template, variables)
-        text = templates.get_text_content(self.template, variables)
-
-        return Message(subject, config.support_email, None, text, html)
+        return None
+        # args = item.get_arguments()
+        # user_email_address = args[0]
+        # url = args[1]
+        # issue_type = args[2]
+        # description = args[3]
+        # issue_id = args[4]
+        #
+        # subject = self.subject % {'service': config.service_name, 'id': issue_id, 'url': url}
+        #
+        # variables = {
+        # 'issue_id': issue_id,
+        #     'user_email': user_email_address,
+        #     'url': url,
+        #     'issue_type': issue_type,
+        #     'description': description
+        # }
+        #
+        # html = templates.get_html_content(self.template, variables)
+        # text = templates.get_text_content(self.template, variables)
+        #
+        # return Message(subject, config.support_email, None, text, html)
 
 
 class ProductVerifyEmail:
