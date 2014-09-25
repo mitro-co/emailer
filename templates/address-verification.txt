@@ -1,0 +1,13 @@
+{% extends "master.txt" %}
+
+{% block content %}
+We want to verify that you created a new account on {{ service }}. If you did, please follow this link:
+
+{{ verification_link }}
+{% end %}
+
+{% block close %}
+If you didn't create an account you can ignore this email. Thanks,
+
+The {{ service }} Team
+{% end %}

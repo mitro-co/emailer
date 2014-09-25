@@ -1,0 +1,18 @@
+{% block salutation %}
+Hello,
+{% end %}
+
+{% block content %}
+{% end %}
+
+{% block close %}
+Thanks,
+
+The {{ service }} Team
+{% end %}
+
+{% block about %}
+What is {{ service }}?
+
+{{ service }} remembers all your passwords so you don't have to, and lets you easily and securely share accounts with others.
+{% end %}

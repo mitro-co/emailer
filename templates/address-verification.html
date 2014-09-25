@@ -1,0 +1,16 @@
+{% extends "master.html" %}
+
+{% block content %}
+<p>We want to verify that you created a new account on {{ service }}. If you did, please click this lovely blue button:</p>
+
+<p style="text-align: center;" align="center">
+  <a href="{{ verification_link }}" style="text-decoration: none; display: inline-block; cursor: pointer; color: #ffffff; background-color: #44a9f8; font-size: 18px; vertical-align: middle; line-height: 30px; border-radius: 6px; padding: 8px 40px; border: 0;">
+    Verify
+  </a>
+</p>
+{% end %}
+
+{% block close %}
+<p>If you didn't create an account you can ignore this email. Thanks,</p>
+<p>The {{ service }} Team</p>
+{% end %}
